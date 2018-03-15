@@ -13,7 +13,7 @@
  必须执行
  */
 + (void)saveContext {
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    AppDelegateCoreData *delegate = (AppDelegateCoreData *)[UIApplication sharedApplication].delegate;
     [delegate saveContext];
 }
 
@@ -26,7 +26,7 @@
  @return YES || NO
  */
 + (BOOL)haveDataWithPredicateString:(NSString *)predicateString identifier:(NSString *)identifier clazz:(Class)clazz {
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    AppDelegateCoreData *delegate = (AppDelegateCoreData *)[UIApplication sharedApplication].delegate;
     // 创建过滤器
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([clazz class])];
     if (identifier.length == 0 || predicateString.length == 0) {
@@ -48,7 +48,7 @@
  @return 对象
  */
 + (id)modelNeedInsertWithClazz:(Class)clazz {
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    AppDelegateCoreData *delegate = (AppDelegateCoreData *)[UIApplication sharedApplication].delegate;
     // 创建过滤器
     NSEntityDescription *description = [NSEntityDescription
                                         entityForName:NSStringFromClass([clazz class])
@@ -64,7 +64,7 @@
  @param model model
  */
 + (void)deleteModel:(id)model {
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    AppDelegateCoreData *delegate = (AppDelegateCoreData *)[UIApplication sharedApplication].delegate;
     [delegate.managedObjectContext deleteObject:model];
 }
 
@@ -72,7 +72,7 @@
  删除所有数据
  */
 + (void)deleteAllModelWithClass:(Class)clazz {
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    AppDelegateCoreData *AppDelegateCoreData = (AppDelegateCoreData *)[UIApplication sharedApplication].delegate;
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([clazz class])];
     NSError *error = nil;
     NSArray *array = [delegate.managedObjectContext executeFetchRequest:request error:&error];
@@ -90,7 +90,7 @@
  @return 数组 或者 model
  */
 + (id)dataWithPredicateString:(NSString *)predicateString identifier:(NSString *)identifier clazz:(Class)clazz {
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    AppDelegateCoreData *delegate = (AppDelegateCoreData *)[UIApplication sharedApplication].delegate;
     // 创建过滤器
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([clazz class])];
     if (identifier.length == 0 || predicateString.length == 0) {

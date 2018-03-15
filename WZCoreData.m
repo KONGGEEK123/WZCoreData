@@ -7,7 +7,7 @@
 //
 
 #import "WZCoreData.h"
-#import "AppDelegate.h"
+#import "AppDelegateCoreData.h"
 @implementation WZCoreData
 /**
  必须执行
